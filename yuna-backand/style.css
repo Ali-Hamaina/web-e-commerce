@@ -1,0 +1,482 @@
+body {
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  right: 0; 
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  color: white;
+  padding: 3px 30px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.icon {
+  font-size: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* ✅ صورة الهيرو الكاملة */
+.hero-image-full {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.products-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.buy-button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.buy-button:hover {
+  background: linear-gradient(135deg, #00cec9, #00b894);
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 206, 201, 0.5);
+}
+
+.buy-button::after {
+  content: "✨";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: sparkle 1.5s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.2; transform: translateY(-50%) scale(1); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.3); }
+}
+
+footer {
+  text-align: center;
+  background: #222;
+  color: white;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  padding: 14px 22px;
+  font-size: 18px;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.whatsapp-float:hover {
+  background-color: #128C7E;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+.whatsapp-float i {
+  font-size: 20px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+#admin-login-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#admin-login-btn img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.admin-modal {
+  display: none; /* مخفي افتراضياً */
+  position: fixed;
+  z-index: 99999;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+
+.admin-modal-content {
+  background: #1e1e2f;
+  padding: 40px 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  transform: translateY(-20px);
+  animation: slideDown 0.4s ease forwards;
+}
+
+.admin-modal-content h2 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 1.2px;
+  color: #55efc4;
+  text-shadow: 0 0 8px #55efc4;
+}
+
+.admin-modal-content input {
+  width: 100%;
+  padding: 14px 15px;
+  margin-bottom: 25px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  background: #2f2f44;
+  color: #eee;
+  box-shadow: inset 0 0 6px #111;
+  transition: background 0.3s ease;
+}
+
+.admin-modal-content input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.admin-modal-content input:focus {
+  outline: none;
+  background: #3e3e62;
+  box-shadow: 0 0 8px #55efc4;
+  color: #dff9fb;
+}
+
+.admin-modal-content button {
+  background: #00b894;
+  color: white;
+  border: none;
+  padding: 14px 0;
+  width: 100%;
+  font-size: 1.2rem;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 5px 15px #00b894aa;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-modal-content button:hover {
+  background: #019875;
+  box-shadow: 0 8px 20px #019875cc;
+}
+
+.close-admin-modal {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.close-admin-modal:hover {
+  color: #55efc4;
+  transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-msg {
+  color: #e74c3c; /* أحمر جميل */
+  font-weight: 700;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  height: 20px;
+}
+.error-msg.show {
+  opacity: 1;
+}
+.social-icons {
+  position: fixed;
+  bottom: 20px;
+  left: 80px;
+  display: flex;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.social-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  border-radius: 50%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+}
+
+/* ألوان أصلية */
+.social-icons a.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, 
+              #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  color: white;
+}
+
+.social-icons a.facebook {
+  background-color: #1877F2;
+  color: white;
+}
+
+.social-icons a.email {
+  background-color: #D44638;
+  color: white;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.alert {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-family: 'Cairo', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+.alert.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.alert.danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.input-box {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 5px 0;
+  width: 200px;
+  font-size: 15px;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  background-color: #444;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+.add-to-cart-btn {
+  background: linear-gradient(135deg, #00695c, #004d40); /* أخضر داكن احترافي */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 77, 64, 0.6);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.add-to-cart-btn:hover {
+  background: linear-gradient(135deg, #004d40, #00695c);
+  box-shadow: 0 6px 20px rgba(0, 105, 92, 0.9);
+}
+
+.admin-button {
+  background: linear-gradient(to right, #0f9b0f, #00b09b);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: 20px;
+}
+.admin-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* أيقونة الأدمن أسفل يسار الصفحة */
+.admin-icon {
+  position: fixed;
+  bottom: 23px;
+  left: 20px;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.6); /* خلفية شفافة */
+  color: #d93025;
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  font-size: 24px;
+  backdrop-filter: blur(5px); /* تأثير ضبابي خلف الأيقونة */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.admin-icon:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.8); /* عند المرور، تقل الشفافية قليلاً */
+  color: #c5221f;
+}
+

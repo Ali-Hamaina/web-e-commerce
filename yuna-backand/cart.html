@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>سلة الشراء - متجر GHZ BOUTIQUE</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+  /* قاعدة عامة */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    background: linear-gradient(135deg, #f0f4ff, #d9e8ff);
+    color: #1a1a1a;
+    margin: 0;
+    padding: 30px 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    user-select: none;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 900;
+    font-size: 2.8rem;
+    color: #34495e;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-shadow: 0 3px 6px rgba(52, 73, 94, 0.15);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 18px;
+  }
+
+  thead tr th {
+    color: #34495e;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #2980b9;
+  }
+
+  tbody tr {
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(41, 128, 185, 0.1);
+    border-radius: 18px;
+    transition: transform 0.3s ease;
+  }
+  tbody tr:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 25px rgba(41, 128, 185, 0.2);
+  }
+
+  td {
+    padding: 15px 12px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1rem;
+    color: #34495e;
+  }
+
+  img.product-thumb {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 3px solid #2980b9;
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  img.product-thumb:hover {
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0 10px 20px rgba(41, 128, 185, 0.5);
+  }
+
+  button.quantity-btn {
+    background: #2980b9;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 0 6px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(41, 128, 185, 0.3);
+  }
+  button.quantity-btn:hover {
+    background: #1f669d;
+    transform: scale(1.15);
+    box-shadow: 0 6px 15px rgba(31, 102, 157, 0.5);
+  }
+
+  button.remove-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.35);
+    transition: background 0.3s ease;
+  }
+  button.remove-btn:hover {
+    background: #c0392b;
+    box-shadow: 0 6px 18px rgba(192, 57, 43, 0.6);
+  }
+
+  .total-price {
+    font-size: 1.9rem;
+    font-weight: 900;
+    margin-top: 40px;
+    text-align: right;
+    color: #27ae60;
+    background: #eafaf1;
+    padding: 20px 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(39, 174, 96, 0.2);
+    user-select: text;
+  }
+
+  button.order-btn {
+    margin-top: 40px;
+    background: linear-gradient(90deg, #25d366, #128c7e);
+    color: white;
+    font-weight: 900;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+    letter-spacing: 1.3px;
+  }
+  button.order-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(18, 140, 126, 0.8);
+  }
+
+  button.clear-btn {
+    display: block;
+    margin: 25px auto 0;
+    background-color: #e74c3c;
+    color: white;
+    font-weight: 700;
+    padding: 14px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(231, 76, 60, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    letter-spacing: 1px;
+  }
+  button.clear-btn:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+    box-shadow: 0 9px 30px rgba(192, 57, 43, 0.6);
+  }
+
+  .back-link-btn {
+    display: block;
+    margin: 0 auto 50px;
+    background-color: #2980b9;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 40px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(41, 128, 185, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    letter-spacing: 1px;
+    width: max-content;
+  }
+  .back-link-btn:hover {
+    background-color: #1f669d;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(31, 102, 157, 0.6);
+  }
+
+  /* رسالة الحذف */
+  #delete-message {
+    display: none;
+    background-color: #e74c3c;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.5);
+    position: relative;
+    z-index: 100;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    body {
+      padding: 15px 10px;
+    }
+    img.product-thumb {
+      width: 60px;
+      height: 60px;
+    }
+    button.quantity-btn {
+      padding: 6px 12px;
+      font-size: 1rem;
+    }
+    button.order-btn, button.clear-btn, .back-link-btn {
+      padding: 14px 20px;
+      font-size: 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+    }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- رسالة الحذف -->
+  <div id="delete-message">تم حذف المنتج من السلة.</div>
+
+  <button onclick="window.location.href='pruodct.html'" class="back-link-btn">🔙 العودة للمتجر</button>
+  <h1>سلة الشراء</h1>
+
+  <button id="clear-cart-btn" class="clear-btn">🗑️ إفراغ السلة بالكامل</button>
+
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>الصورة</th>
+        <th>اسم المنتج</th>
+        <th>السعر (ريال)</th>
+        <th>الكمية</th>
+        <th>الإجمالي (ريال)</th>
+        <th>حذف</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <p class="total-price" id="total-price">الإجمالي: 0 درهم</p>
+  <button id="order-btn" class="order-btn">أطلب الآن عبر واتساب</button>
+
+<script>
+  // بيانات المنتجات الثابتة
+  const products = JSON.parse(localStorage.getItem('products')) || [];
+
+  // جلب السلة من localStorage أو تهيئتها كفارغة
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  const cartTableBody = document.querySelector('#cart-table tbody');
+  const totalPriceEl = document.getElementById('total-price');
+  const orderBtn = document.getElementById('order-btn');
+  const clearCartBtn = document.getElementById('clear-cart-btn');
+  const deleteMessage = document.getElementById('delete-message');
+
+  // عرض رسالة الحذف لفترة قصيرة
+  function showDeleteMessage() {
+    deleteMessage.style.display = 'block';
+    setTimeout(() => {
+      deleteMessage.style.display = 'none';
+    }, 3000);
+  }
+
+  function sanitize(str) {
+    return str.replace(/[&<>"']/g, function (match) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      };
+      return map[match];
+    });
+  }
+
+
+  // عرض محتوى السلة في الجدول
+  function renderCart() {
+    cartTableBody.innerHTML = '';
+
+    if (cart.length === 0) {
+      cartTableBody.innerHTML = '<tr><td colspan="6">سلة الشراء فارغة.</td></tr>';
+      totalPriceEl.textContent = 'الإجمالي: 0 درهم';
+      orderBtn.style.display = 'none';
+      clearCartBtn.style.display = 'none';
+      return;
+    }
+
+    orderBtn.style.display = 'block';
+    clearCartBtn.style.display = 'block';
+
+    let total = 0;
+
+    cart.forEach(item => {
+      const product = products.find(p => p.id === item.id);
+      if (!product) return;
+
+      const itemTotal = product.price * item.quantity;
+      total += itemTotal;
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><img src="${sanitize(product.image)}" alt="${sanitize(product.name)}" class="product-thumb"></td>
+        <td>${sanitize(product.name)}</td>
+        <td>${product.price}</td>
+        <td>
+          <button class="quantity-btn" onclick="changeQuantity(${product.id}, -1)">-</button>
+          ${item.quantity}
+          <button class="quantity-btn" onclick="changeQuantity(${product.id}, 1)">+</button>
+        </td>
+        <td>${itemTotal}</td>
+        <td><button class="remove-btn" onclick="removeFromCart(${product.id})">حذف</button></td>
+      `;
+      cartTableBody.appendChild(tr);
+
+    });
+
+    totalPriceEl.textContent = 'الإجمالي: ' + total + ' درهم';
+  }
+
+  // حفظ حالة السلة في localStorage
+  function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  // تغيير كمية منتج في السلة
+  function changeQuantity(productId, change) {
+    const item = cart.find(i => i.id === productId);
+    if (!item) return;
+
+    item.quantity += change;
+
+    if (item.quantity < 1) {
+      // لو صار العدد أقل من 1، يرجع 1 (يمكن التعديل هنا لحذف المنتج مثلاً)
+      showDeleteMessage();
+      item.quantity = 1;
+    }
+
+    saveCart();
+    renderCart();
+  }
+
+  // حذف منتج من السلة
+  function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    renderCart();
+    showDeleteMessage();
+  }
+
+  // إفراغ السلة بالكامل
+  clearCartBtn.addEventListener('click', () => {
+    if (confirm('هل أنت متأكد أنك تريد إفراغ السلة بالكامل؟')) {
+      cart = [];
+      saveCart();
+      renderCart();
+    }
+  });
+
+  // إرسال الطلب عبر واتساب مع تفاصيل الطلب
+  orderBtn.addEventListener('click', () => {
+    if (cart.length === 0) return;
+
+    let message = 'أرغب في طلب العطور التالية:\n';
+    let total = 0;
+
+    cart.forEach(item => {
+      const product = products.find(p => p.id === item.id);
+      if (!product) return;
+
+      const itemTotal = product.price * item.quantity;
+      total += itemTotal;
+      message += `- ${product.name} (الكمية: ${item.quantity}) = ${itemTotal} درهم\n`;
+    });
+
+    message += `\nالإجمالي الكلي: ${total} درهم`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappNumber = '212713071000'; // غيّر الرقم هنا إلى رقمك في واتساب بدون + أو رموز
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  });
+
+  // عرض السلة عند تحميل الصفحة
+  renderCart();
+</script>
+</body>
+</html>
