@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
                 <i className="fab fa-instagram"></i>
               </a>
               <a
-                href="https://web.facebook.com/YunaPurfum"
+                href="https://web.facebook.c"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-blue-500 hover:text-blue-400 transition-colors"
